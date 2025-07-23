@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import pool from "./config/db.js";
 
 dotenv.config();
 
@@ -15,7 +16,13 @@ app.use(cors());
 
 // error handling middlewares
 
+// testing postgres connection
+app.get("/", async (req, res) => {
+  const result = await pool.query("SELECT current_database()");
+  res.send(`The database name is: ${result.rows[0].current_database}`);
+});
+
 // server running
 app.listen(port, () => {
-  console.log(`Server is running on http:localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
