@@ -1,3 +1,4 @@
 import app from "../src/app.js";
+import ServerlessHttp from "serverless-http";
 
-export default app;
+export const handler = ServerlessHttp(app);
