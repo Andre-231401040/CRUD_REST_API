@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("https://crud-rest-api-six.vercel.app/api", userRoutes);
+app.use("/api", userRoutes);
 
 // error handling middlewares
 app.use(errorHandling);
